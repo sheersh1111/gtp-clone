@@ -7,8 +7,8 @@ https://documenter.getpostman.com/view/21465485/2sAYQgh8JD
 
 ```bash
 npm i
-npm run dev
 sudo service redis-server start
+npm run dev
 
 
 
