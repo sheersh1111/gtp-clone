@@ -1,9 +1,13 @@
 import { Request, Response } from "express";
 import { Prompt } from "../models/promptModel";
 import { createConversation } from "../repository/conversationRepo";
+import { promptQuestion } from "../service";
 
 export const createPrompt = async (req: any, res: Response) => {
-  let { question, answer, conversationId } = req.body;
+  let { question, conversationId } = req.body;
+  const promptAnswer = await promptQuestion(question);
+  const answer=promptAnswer.choices?.[0]?.message?.content;
+  
   try {
     if(!conversationId){
         const title = question.slice(0,10);
